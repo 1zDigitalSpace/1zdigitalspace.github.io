@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+}
+body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            opacity: 0.7;
+            background-color: #572e2e;
+            background-image: url('https://static.codemao.cn/pickduck/H1gEDCqcxl.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            touch-action: manipulation;
+            /* 防止缩放时出现滚动条 */
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+/* 缩放包装容器 - 关键样式 */
+        #scaling-wrapper {
+            /* 设计稿基准尺寸 */
+            width: 1080px;
+            height: 720px;
+            /* 定位居中 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            /* 缩放基点设置为左上角，便于计算 */
+            /* 初始变换，后续由JS动态控制 */
+            /* 背景和阴影 */
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+.舞台区域 {
+    background-color: white;
+    text-align: center;
+    padding:18px 0;
+    font-size: 36px;
+    padding-bottom: 9px;
+    padding-top: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+}
+
+.容器 {
+    width: 100%;
+    height: calc(100% - 162px);
+    overflow: hidden;
+}
+
+.座位容器 {
+    height: 100%;
+    overflow: hidden;
+    padding: 5px;
+    padding-bottom: 0;
+    background-color: white;
+    margin-bottom: 0;
+}
+.座位容器::-webkit-scrollbar-track {
+    background-color: #00000000;
+    display: none;
+}
+.座位容器::-webkit-scrollbar-thumb {
+    background-color: #00000000;
+    display: none;
+}
+.座位容器::-webkit-scrollbar-button {
+    background-color: #00000000;
+    display: none;
+}
+.行 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    background-color: white;
+}
+.行标签 {
+    width: 38px;  /* 减小宽度以适应小屏幕 */
+    height:18px;
+    text-align: center;
+    margin: 0 5px;  /* 减小边距 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12.41px;  /* 设置基础字体大小 */
+}
+
+.座位 {
+    width: 16.2px;
+    height: 20.71px;
+    padding: 0 2px;
+    margin: 0 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #9c9c9c;
+    border-radius: 4px;
+    color: #572e2eab;
+    cursor: pointer;
+    font-size: 12.41px;
+    font-weight: 100;
+    transition: all 0.2s;
+}
+
+.座位.高亮 {
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.6);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.过道 {
+    width: 20.2px;
+}
+.控制区 {
+    text-align: center;
+    background-color: white;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+    padding-top: 0;
+    width: 100%;
+    position: relative;
+    font-size: 14.4px; /* 设置基础字体大小 */
+}
+.控制区 label {
+    font-size: inherit; /* 继承父元素字体大小 */
+}
+
+.控制区 input[type="number"] {
+    font-size: inherit; /* 继承父元素字体大小 */
+    height: 1.5em;
+}
+button {
+    font-size: 18px;
+    height: 36px;
+    width: 108px;
+    padding-bottom: 5px;
+    margin: 0 10px;
+    background-color: #ff3030;
+    color: white;
+    border: none;
+    border-radius: 10000px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 3px;
+}
+
+button:disabled {
+    background-color: #d66363;
+    cursor: not-allowed;
+}
+
+.特殊行 {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+    height: 10px;
+}
+.高亮列表 {
+    font-size: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 18px;
+}
+.轮次显示 {
+    font-size: 12.6px;
+    color: #666;
+    margin: 7.2px 0;
+}
+
+.版权信息 {
+    font-size: 10.8px;
+    color: #999;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+}
+
+.输入组, .开关组 {
+    display: inline;
+    User-select :none;
+}
+
+#抽奖人数 {
+    width: 40px;
+    display: inline;
+    User-select :none;
+}
+
+.开关标签 {
+    margin-left: 0px;
+    cursor: pointer;
+    User-select :none;
+}
+.开关{
+    margin-left: 15px;
+    bottom:px;
+}

@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://home.lolicon.xin/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兰州一中校史与校园文化知识测试</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: url('https://static.codemao.cn/pickduck/BJbMNOTsee.jpg?hash=lrNHTzSs1fX49pZP0yW1J3dz1wqZ');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ff0000;
+            position: relative;
+        }
+        h1 {
+            color: #ff0000;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #ff0000;
+            border-radius: 2px;
+        }
+        .exam-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background: rgba(255, 0, 0, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff0000;
+        }
+        .section {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            color: #ff0000;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+            position: relative;
+        }   
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #ff0000;
+            border-radius: 2px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .question:hover {
+            transform: translateY(-3px);
+        }
+        .question-text {
+            border-left: 4px solid #ff0000;
+            padding-left: 5px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .option {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: rgba(255, 0, 0, 0.1);
+        }
+        .option label {
+            cursor: pointer;
+            margin-left: 8px;
+            flex-grow: 1;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #ff0000;
+            outline: none;
+        }
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 5px;
+            height: 150px;
+            resize: vertical;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        textarea:focus {
+            border-color: #0088ff;
+            outline: none;
+        }
+        .correct {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        #submit-btn {
+            background: linear-gradient(to right, #ff0000, #cc0000);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        #submit-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(to right, #cc0000, #aa0000);
+        }
+        #submit-btn:active {
+            transform: translateY(1px);
+        }
+        #results {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(232, 245, 233, 0.4);
+            border-radius: 10px;
+        }
+        #total-score {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .answer-review {
+            margin-top: 20px;
+        }
+        .review-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+        .answer-compare {
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .score-breakdown {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(187, 222, 251, 0.7);
+            border-radius: 8px;
+        }
+        .score-breakdown h3 {
+            margin-bottom: 10px;
+            color: #0d47a1;
+            font-size: 1.3rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+            font-size: 14px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .correct-answer {
+            color: #4caf50;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .user-answer {
+            display: inline-block;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .answer-feedback {
+            margin-top: 5px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .essay-review {
+            background-color: rgba(249, 249, 249, 0.4);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        .reference-answer {
+            background-color: rgba(232, 245, 233, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #4caf50;
+        }
+        .score-reason {
+            margin-top: 15px;
+            font-style: italic;
+            color: #555;
+            padding: 10px;
+            background: rgba(245, 245, 245, 0.4);
+            border-radius: 8px;
+        }
+        .feedback-correct {
+            background-color: rgba(232, 245, 233, 0.4);
+            border-left: 4px solid #4caf50;
+        }
+        .feedback-incorrect {
+            background-color: rgba(255, 235, 238, 0.4);
+            border-left: 4px solid #f44336;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .exam-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>兰州一中2025年校史与校园文化知识测试卷</h1>
+            <div class="exam-info">
+                <div>考试时间: 40分钟</div>
+                <div>总分: 100分</div>
+            </div>
+        </header>
+
+        <form id="quiz-form">
+            <!-- 选择题部分 -->
+            <div class="section">
+                <h2 class="section-title">一、选择题(每题2分，共40分)</h2>
+                
+                <div class="question" id="q1-container">
+                    <div class="question-text">1. 兰州一中校训"弘毅"出自以下哪部经典?（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q1" value="A" id="q1_optionA">
+                            <label for="q1_optionA">A. 《论语》</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="B" id="q1_optionB">
+                            <label for="q1_optionB">B. 《孟子》</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="C" id="q1_optionC">
+                            <label for="q1_optionC">C. 《大学》</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="D" id="q1_optionD">
+                            <label for="q1_optionD">D. 《中庸》</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q2-container">
+                    <div class="question-text">2. 兰州一中的创办时间是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q2" value="A" id="q2_optionA">
+                            <label for="q2_optionA">A. 1902年</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="B" id="q2_optionB">
+                            <label for="q2_optionB">B. 1912年</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="C" id="q2_optionC">
+                            <label for="q2_optionC">C. 1922年</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="D" id="q2_optionD">
+                            <label for="q2_optionD">D. 1932年</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q3-container">
+                    <div class="question-text">3. 下列哪项不属于兰州一中的办学理念?（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q3" value="A" id="q3_optionA">
+                            <label for="q3_optionA">A. 养德</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="B" id="q3_optionB">
+                            <label for="q3_optionB">B. 开智</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="C" id="q3_optionC">
+                            <label for="q3_optionC">C. 健体</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="D" id="q3_optionD">
+                            <label for="q3_optionD">D. 创新</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q4-container">
+                    <div class="question-text">4. 兰州一中首任总教习是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q4" value="A" id="q4_optionA">
+                            <label for="q4_optionA">A. 刘光蕡</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="B" id="q4_optionB">
+                            <label for="q4_optionB">B. 刘尔炘</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="C" id="q4_optionC">
+                            <label for="q4_optionC">C. 水梓</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="D" id="q4_optionD">
+                            <label for="q4_optionD">D. 华遵舜</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q5-container">
+                    <div class="question-text">5. 下列校友中，被誉为"甘肃早期革命的璀璨星火"的是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q5" value="A" id="q5_optionA">
+                            <label for="q5_optionA">A. 金树仁</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="B" id="q5_optionB">
+                            <label for="q5_optionB">B. 张一悟</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="C" id="q5_optionC">
+                            <label for="q5_optionC">C. 水梓</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="D" id="q5_optionD">
+                            <label for="q5_optionD">D. 邓宗</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q6-container">
+                    <div class="question-text">6. 下列哪项是"弘毅"校训的核心内涵?（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q6" value="A" id="q6_optionA">
+                            <label for="q6_optionA">A. 团结协作，追求卓越</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="B" id="q6_optionB">
+                            <label for="q6_optionB">B. 志向远大，意志坚强</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="C" id="q6_optionC">
+                            <label for="q6_optionC">C. 勤奋学习，诚实守信</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="D" id="q6_optionD">
+                            <label for="q6_optionD">D. 热爱祖国，服务社会</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q7-container">
+                    <div class="question-text">7. 兰州一中的"弘毅"校训在新时代的寓意是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q7" value="A" id="q7_optionA">
+                            <label for="q7_optionA">A. 培养改造社会的传统人才</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="B" id="q7_optionB">
+                            <label for="q7_optionB">B. 强调应试能力的提升</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="C" id="q7_optionC">
+                            <label for="q7_optionC">C. 注重创新精神和实践能力</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="D" id="q7_optionD">
+                            <label for="q7_optionD">D. 回归传统文化的单一传承</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q8-container">
+                    <div class="question-text">8. 兰州一中在历史上曾多次更名，以下哪一名称未使用过?（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q8" value="A" id="q8_optionA">
+                            <label for="q8_optionA">A. 甘肃高等学堂</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="B" id="q8_optionB">
+                            <label for="q8_optionB">B. 甘肃省立兰州中学</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="C" id="q8_optionC">
+                            <label for="q8_optionC">C. 兰州第一中学</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="D" id="q8_optionD">
+                            <label for="q8_optionD">D. 兰州实验中学</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q9-container">
+                    <div class="question-text">9. 兰州一中的"弘毅"精神与湖湘文化中的哪一特质相呼应?（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q9" value="A" id="q9_optionA">
+                            <label for="q9_optionA">A. 心忧天下，敢为人先</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q9" value="B" id="q9_optionB">
+                            <label for="q9_optionB">B. 兼容并蓄，开放包容</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q9" value="C" id="q9_optionC">
+                            <label for="q9_optionC">C. 宁静致远，淡泊明志</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q9" value="D" id="q9_optionD">
+                            <label for="q9_optionD">D. 刚柔并济，务实进取</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q10-container">
+                    <div class="question-text">10. 学生交响乐团成立于（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q10" value="A" id="q10_optionA">
+                            <label for="q10_optionA">A. 1995年</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="B" id="q10_optionB">
+                            <label for="q10_optionB">B. 1993年</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="C" id="q10_optionC">
+                            <label for="q10_optionC">C. 2000年</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="D" id="q10_optionD">
+                            <label for="q10_optionD">D. 2010年</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q11-container">
+                    <div class="question-text">11. 下列社团中，属于兰州一中科技类社团的是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q11" value="A" id="q11_optionA">
+                            <label for="q11_optionA">A. 鸣默辩论社</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q11" value="B" id="q11_optionB">
+                            <label for="q11_optionB">B. 机器人社</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q11" value="C" id="q11_optionC">
+                            <label for="q11_optionC">C. 合音立方</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q11" value="D" id="q11_optionD">
+                            <label for="q11_optionD">D. 风雅轩</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q12-container">
+                    <div class="question-text">12. 兰州一中学生交响乐团曾在2007年参加第36届维也纳国际青年音乐节并获得（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q12" value="A" id="q12_optionA">
+                            <label for="q12_optionA">A. 金奖</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q12" value="B" id="q12_optionB">
+                            <label for="q12_optionB">B. 银奖</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q12" value="C" id="q12_optionC">
+                            <label for="q12_optionC">C. 铜奖</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q12" value="D" id="q12_optionD">
+                            <label for="q12_optionD">D. 优秀奖</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q13-container">
+                    <div class="question-text">13. 兰州一中的校风是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q13" value="A" id="q13_optionA">
+                            <label for="q13_optionA">A. 开放 多元 和谐 卓越</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q13" value="B" id="q13_optionB">
+                            <label for="q13_optionB">B. 开放 包容 博爱 启智</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q13" value="C" id="q13_optionC">
+                            <label for="q13_optionC">C. 求真 务实 乐育 创新</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q13" value="D" id="q13_optionD">
+                            <label for="q13_optionD">D. 敦品 善思 励志 乐学</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q14-container">
+                    <div class="question-text">14. 兰州一中"五星"学生评选包括学习之星、文明之星、体艺之星、进步之星和（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q14" value="A" id="q14_optionA">
+                            <label for="q14_optionA">A. 劳动之星</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q14" value="B" id="q14_optionB">
+                            <label for="q14_optionB">B. 服务之星</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q14" value="C" id="q14_optionC">
+                            <label for="q14_optionC">C. 创新之星</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q14" value="D" id="q14_optionD">
+                            <label for="q14_optionD">D. 环保之星</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q15-container">
+                    <div class="question-text">15. 兰州一中在2024年新任命的校长是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q15" value="A" id="q15_optionA">
+                            <label for="q15_optionA">A. 王文槐</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q15" value="B" id="q15_optionB">
+                            <label for="q15_optionB">B. 化得福</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q15" value="C" id="q15_optionC">
+                            <label for="q15_optionC">C. 李向荣</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q15" value="D" id="q15_optionD">
+                            <label for="q15_optionD">D. 白春永</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q16-container">
+                    <div class="question-text">16. 兰州一中对学生手机的管理要求是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q16" value="A" id="q16_optionA">
+                            <label for="q16_optionA">A. 严禁将手机带入校园</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q16" value="B" id="q16_optionB">
+                            <label for="q16_optionB">B. 可以将手机偷偷带入校园</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q16" value="C" id="q16_optionC">
+                            <label for="q16_optionC">C. 只要不影响学习，可以带入校园</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q16" value="D" id="q16_optionD">
+                            <label for="q16_optionD">D. 关机后可带入校园</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q17-container">
+                    <div class="question-text">17. 下列不属于兰州一中"十条禁令"的是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q17" value="A" id="q17_optionA">
+                            <label for="q17_optionA">A. 严禁携带手机入校</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q17" value="B" id="q17_optionB">
+                            <label for="q17_optionB">B. 严禁吸烟饮酒</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q17" value="C" id="q17_optionC">
+                            <label for="q17_optionC">C. 严禁考试作弊</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q17" value="D" id="q17_optionD">
+                            <label for="q17_optionD">D. 严禁学生节假日入校自习</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q18-container">
+                    <div class="question-text">18. 兰州一中社团活动秉承的核心理念是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q18" value="A" id="q18_optionA">
+                            <label for="q18_optionA">A. 用文化浸润心灵</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q18" value="B" id="q18_optionB">
+                            <label for="q18_optionB">B. 弘毅</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q18" value="C" id="q18_optionC">
+                            <label for="q18_optionC">C. 立德树人</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q18" value="D" id="q18_optionD">
+                            <label for="q18_optionD">D. 培养创新精神</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q19-container">
+                    <div class="question-text">19. 兰州一中的"弘毅"精神要求学生（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q19" value="A" id="q19_optionA">
+                            <label for="q19_optionA">A. 只关注学业成绩</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q19" value="B" id="q19_optionB">
+                            <label for="q19_optionB">B. 勇于担当社会责任</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q19" value="C" id="q19_optionC">
+                            <label for="q19_optionC">C. 追求个人利益最大化</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q19" value="D" id="q19_optionD">
+                            <label for="q19_optionD">D. 避免参与社会实践</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q20-container">
+                    <div class="question-text">20. 兰州一中的办学理念中，"立美"指的是（）</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q20" value="A" id="q20_optionA">
+                            <label for="q20_optionA">A. 培养审美能力和艺术素养</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q20" value="B" id="q20_optionB">
+                            <label for="q20_optionB">B. 追求外在形象的完美</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q20" value="C" id="q20_optionC">
+                            <label for="q20_optionC">C. 建立美丽校园环境</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q20" value="D" id="q20_optionD">
+                            <label for="q20_optionD">D. 树立个人英雄主义</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 填空题部分 -->
+            <div class="section">
+                <h2 class="section-title">二、填空题（每空2分，共20分）</h2>
+                
+                <div class="question" id="q21-container">
+                    <div class="question-text">21. 别号为"五泉山人"的兰州一中前校长是________。</div>
+                    <input type="text" style="background:#ffffff54" name="q21">
+                </div>
+                
+                <div class="question" id="q22-container">
+                    <div class="question-text">22. 兰州一中在1939年因防日本飞机空袭，曾迁往________县辛甸镇办学。</div>
+                    <input type="text" style="background:#ffffff54" name="q22">
+                </div>
+                
+                <div class="question" id="q23-container">
+                    <div class="question-text">23. 兰州一中在1917年由校长________拟定"弘毅"为校训，并亲笔题写匾额。</div>
+                    <input type="text" style="background:#ffffff54" name="q23">
+                </div>
+                
+                <div class="question" id="q24-container">
+                    <div class="question-text">24. 兰州一中是全国和全省________传统体育项目学校。</div>
+                    <input type="text" style="background:#ffffff54" name="q24">
+                </div>
+                
+                <div class="question" id="q25-container">
+                    <div class="question-text">25. 兰州一中校友________是新中国成立以来学校走出的第一位院士。</div>
+                    <input type="text" style="background:#ffffff54" name="q25">
+                </div>
+                
+                <div class="question" id="q26-container">
+                    <div class="question-text">26. 兰州一中的校址是________。</div>
+                    <input type="text" style="background:#ffffff54" name="q26">
+                </div>
+                
+                <div class="question" id="q27-container">
+                    <div class="question-text">27. 兰州一中的学风是敦品、笃志、砥学、________。</div>
+                    <input type="text" style="background:#ffffff54" name="q27">
+                </div>
+                
+                <div class="question" id="q28-container">
+                    <div class="question-text">28. 《兰州一中学生社团管理条例》规定，社团成立时发起人至少为________人以上。</div>
+                    <input type="text" style="background:#ffffff54" name="q28">
+                </div>
+                
+                <div class="question" id="q29-container">
+                    <div class="question-text">29. 兰州一中"弘毅标兵"评选要求至少具备学习之星、文明之星和________的评选条件。</div>
+                    <input type="text" style="background:#ffffff54" name="q29">
+                </div>
+                
+                <div class="question" id="q30-container">
+                    <div class="question-text">30. 兰州一中学生培养目标是培养________，情感丰盈，精神高贵，智慧卓越，意坚志远，学业优良的弘毅学子。</div>
+                    <input type="text" style="background:#ffffff54" name="q30">
+                </div>
+            </div>
+
+            <!-- 判断题部分 -->
+            <div class="section">
+                <h2 class="section-title">三、判断题（每小题2分，共20分）</h2>
+                
+                <div class="question" id="q31-container">
+                    <div class="question-text">31. 兰州一中在2007年被国家人事部、教育部授予"全国教育系统先进集体"称号。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q31" value="true" id="q31_true">
+                            <label for="q31_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q31" value="false" id="q31_false">
+                            <label for="q31_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q32-container">
+                    <div class="question-text">32. 《兰州一中学生仪容仪表规范》要求，女生可佩戴简单的项链和耳环。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q32" value="true" id="q32_true">
+                            <label for="q32_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q32" value="false" id="q32_false">
+                            <label for="q32_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q33-container">
+                    <div class="question-text">33. 《兰州一中课堂规范》"十要"中提到，课前将课本、笔记、文具等整齐摆放在课桌上，避免上课时翻找物品影响效率。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q33" value="true" id="q33_true">
+                            <label for="q33_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q33" value="false" id="q33_false">
+                            <label for="q33_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q34-container">
+                    <div class="question-text">34. 《兰州一中考试守则》规定，考生迟到15分钟仍可进入考场参加考试。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q34" value="true" id="q34_true">
+                            <label for="q34_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q34" value="false" id="q34_false">
+                            <label for="q34_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q35-container">
+                    <div class="question-text">35. 《兰州一中学生行为规范考核办法》中，每位学生每学期行为规范基本分为100分。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q35" value="true" id="q35_true">
+                            <label for="q35_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q35" value="false" id="q35_false">
+                            <label for="q35_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q36-container">
+                    <div class="question-text">36. 兰州一中学生课堂上只要不影响听课，可以随意吃喝。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q36" value="true" id="q36_true">
+                            <label for="q36_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q36" value="false" id="q36_false">
+                            <label for="q36_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q37-container">
+                    <div class="question-text">37. 《兰州一中学生违纪处理办法》中，考试作弊者，本次考试以零分计，且会给予相应处分。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q37" value="true" id="q37_true">
+                            <label for="q37_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q37" value="false" id="q37_false">
+                            <label for="q37_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q38-container">
+                    <div class="question-text">38. 《中学生日常行为规范》要求，学生应遵守交通法规，不闯红灯，过马路走人行横道。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q38" value="true" id="q38_true">
+                            <label for="q38_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q38" value="false" id="q38_false">
+                            <label for="q38_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q39-container">
+                    <div class="question-text">39. 《兰州一中学生课堂规范》"十要十不要"中提到，课堂上可以携带水杯并放在课桌上。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q39" value="true" id="q39_true">
+                            <label for="q39_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q39" value="false" id="q39_false">
+                            <label for="q39_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q40-container">
+                    <div class="question-text">40. 兰州一中学生上学期间必须穿校服。</div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q40" value="true" id="q40_true">
+                            <label for="q40_true">正确</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q40" value="false" id="q40_false">
+                            <label for="q40_false">错误</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 简答题部分 -->
+            <div class="section">
+                <h2 class="section-title">四、简答题（共20分）</h2>
+                
+                <div class="question" id="q41-container">
+                    <div class="question-text">41. 请结合兰州一中的"弘毅"精神，谈谈作为一名弘毅学子如何在学习和生活中践行这一校训。</div>
+                    <textarea name="q41" style="background:#ffffff54"  placeholder="请输入您的答案"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button type="button" id="submit-btn">提交试卷</button>
+            </div>
+        </form>
+
+        <div id="results">
+            <div id="total-score">您的总分: <span id="score-value">0</span> 分</div>
+            
+            <div class="score-breakdown">
+                <h3>得分明细</h3>
+                <p>选择题得分: <span id="choice-score">0</span> 分</p>
+                <p>填空题得分: <span id="fill-score">0</span> 分</p>
+                <p>判断题得分: <span id="judge-score">0</span> 分</p>
+                <p>简答题得分: <span id="essay-score">0</span> 分</p>
+            </div>
+            
+            <div class="answer-review">
+                <h3>答案详情</h3>
+                <div id="answer-details"></div>
+            </div>
+        </div>
+        
+        <span class="info">©<span id="2year">114514</span> <a style="text-decoration:none;color:#ff0000b2"
+                href="https://hello.1zdigital.space/">数码空间</a></span>
+        <script type="text/javascript">
+            function toChineseYear(year) {
+            var chineseNumbers = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+            var yearStr = year.toString();
+            var result = '';
+            for (var i = 0; i < yearStr.length; i++) {
+                result += chineseNumbers[parseInt(yearStr.charAt(i))];
+            }
+            return result;
+            }
+    
+            var nowyear = new Date().getFullYear();
+            var a1 = toChineseYear(nowyear);
+            document.getElementById("2year").innerHTML = a1;</script>
+    </div>
+
+
+    <script>
+        // 正确答案
+        const correctAnswers = {
+            // 选择题答案
+            q1: "A", q2: "A", q3: "D", q4: "A", q5: "B", q6: "B", q7: "C", q8: "D", q9: "A", q10: "B",
+            q11: "B", q12: "C", q13: "A", q14: "B", q15: "C", q16: "A", q17: "D", q18: "A", q19: "B", q20: "A",
+            
+            // 填空题答案
+            q21: "刘尔炘", q22: "临洮", q23: "水梓", q24: "排球", q25: "王陇德",
+            q26: "小沟头12号", q27: "善思", q28: "10", q29: "体艺之星", q30: "身心健康",
+            
+            // 判断题答案
+            q31: "true", q32: "false", q33: "true", q34: "false", q35: "true",
+            q36: "false", q37: "true", q38: "true", q39: "false", q40: "true"
+        };
+        
+        // 简答题参考答案
+        const essayReference = "弘毅校训源自《论语》，意为志向远大、意志坚强。作为一名弘毅学子，应在学习上树立高远目标，勤奋刻苦；在生活中严于律己，培养良好品德；在个人发展上注重全面发展，将个人理想与国家发展相结合，担当社会责任。";
+        
+        // 简答题评分关键词
+        const essayKeywords = [
+            "志向远大", "意志坚强", "树立高远目标", "勤奋刻苦",
+            "严于律己", "培养品德", "全面发展",
+            "个人理想", "国家发展", "担当社会责任"
+        ];
+        
+        // 提交按钮点击事件
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            // 初始化分数
+            let choiceScore = 0;
+            let fillScore = 0;
+            let judgeScore = 0;
+            let essayScore = 0;
+            
+            // 清空之前的答案详情
+            document.getElementById('answer-details').innerHTML = '';
+            
+            // 选择题评分
+            for (let i = 1; i <= 20; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                const userAnswer = selectedOption ? selectedOption.value : '未作答';
+                const isCorrect = userAnswer === correctAnswers[questionName];
+                
+                if (isCorrect) {
+                    choiceScore += 2;
+                }
+                
+                // 添加答案详情
+                addAnswerReview(i, userAnswer, isCorrect, correctAnswers[questionName], '选择题');
+            }
+            
+            // 填空题评分
+            for (let i = 21; i <= 30; i++) {
+                const questionName = `q${i}`;
+                const inputElement = document.querySelector(`input[name="${questionName}"]`);
+                const userAnswer = inputElement.value.trim();
+                const isCorrect = userAnswer === correctAnswers[questionName];
+                
+                if (isCorrect) {
+                    fillScore += 2;
+                }
+                
+                // 添加答案详情
+                addAnswerReview(i, userAnswer, isCorrect, correctAnswers[questionName], '填空题');
+            }
+            
+            // 判断题评分
+            for (let i = 31; i <= 40; i++) {
+                const questionName = `q${i}`;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                const userAnswer = selectedOption ? selectedOption.value : '未作答';
+                const isCorrect = userAnswer === correctAnswers[questionName];
+                
+                if (isCorrect) {
+                    judgeScore += 2;
+                }
+                
+                // 添加答案详情
+                addAnswerReview(i, userAnswer, isCorrect, correctAnswers[questionName], '判断题');
+            }
+            
+            // 简答题评分
+            const essayElement = document.querySelector('textarea[name="q41"]');
+            const userEssay = essayElement.value.trim();
+            essayScore = gradeEssay(userEssay);
+            
+            // 添加简答题详情
+            addEssayReview(userEssay, essayScore);
+            
+            // 计算总分
+            const totalScore = choiceScore + fillScore + judgeScore + essayScore;
+            
+            // 更新分数显示
+            document.getElementById('score-value').textContent = totalScore;
+            document.getElementById('choice-score').textContent = choiceScore;
+            document.getElementById('fill-score').textContent = fillScore;
+            document.getElementById('judge-score').textContent = judgeScore;
+            document.getElementById('essay-score').textContent = essayScore;
+            
+            // 显示结果区域
+            document.getElementById('results').style.display = 'block';
+            
+            // 滚动到结果区域
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // 添加答案详情函数（修复版）
+        function addAnswerReview(questionNumber, userAnswer, isCorrect, correctAnswer, questionType) {
+            const answerDetails = document.getElementById('answer-details');
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-item';
+            
+            // 获取问题容器
+            const questionContainer = document.getElementById(`q${questionNumber}-container`);
+            if (!questionContainer) {
+                console.error(`找不到问题${questionNumber}的容器`);
+                return;
+            }
+            
+            // 获取问题文本
+            const questionTextElement = questionContainer.querySelector('.question-text');
+            if (!questionTextElement) {
+                console.error(`找不到问题${questionNumber}的文本元素`);
+                return;
+            }
+            
+            const questionText = questionTextElement.textContent;
+            
+            if (questionType === '填空题') {
+                reviewItem.innerHTML = `
+                    <p>${questionText}</p>
+                    <div class="answer-feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                        您的答案: 
+                        <span class="${isCorrect ? 'correct' : 'incorrect'} user-answer">${userAnswer || '未作答'}</span>
+                        ${!isCorrect ? `正确答案: <span class="correct-answer">${correctAnswer}</span>` : ''}
+                    </div>
+                `;
+            } else {
+                reviewItem.innerHTML = `
+                    <p>${questionText}</p>
+                    <div class="answer-feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                        您的答案: <span class="${isCorrect ? 'correct' : 'incorrect'}">${userAnswer || '未作答'}</span>
+                        ${!isCorrect ? ` | 正确答案: <span class="correct">${correctAnswer}</span>` : ''}
+                    </div>
+                `;
+            }
+            
+            answerDetails.appendChild(reviewItem);
+        }
+        
+        // 添加简答题详情
+        function addEssayReview(userEssay, score) {
+            const answerDetails = document.getElementById('answer-details');
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-item';
+            
+            const questionContainer = document.getElementById('q41-container');
+            if (!questionContainer) {
+                console.error('找不到简答题容器');
+                return;
+            }
+            
+            const questionTextElement = questionContainer.querySelector('.question-text');
+            if (!questionTextElement) {
+                console.error('找不到简答题文本');
+                return;
+            }
+            
+            const questionText = questionTextElement.textContent;
+            
+            // 获取匹配的关键词
+            const matchedKeywords = [];
+            essayKeywords.forEach(keyword => {
+                if (userEssay.includes(keyword)) {
+                    matchedKeywords.push(keyword);
+                }
+            });
+            
+            reviewItem.innerHTML = `
+                <p>${questionText}</p>
+                <div class="reference-answer">
+                    <p><strong>您的答案:</strong></p>
+                    <p>${userEssay || '未作答'}</p>
+                
+                    <p><strong>参考答案:</strong></p>
+                    <p>${essayReference}</p>
+                </div>
+                
+                <div class="score-reason">
+                    <p>得分: <span class="correct">${score}</span> 分（满分20分）</p>
+                    <p>匹配关键词: ${matchedKeywords.length > 0 ? matchedKeywords.join('、') : '无'}</p>
+                </div>
+            `;
+            
+            answerDetails.appendChild(reviewItem);
+        }
+        
+        // 简答题评分函数
+        function gradeEssay(essay) {
+            if (!essay) return 0;
+            
+            let score = 0;
+            let keywordCount = 0;
+            
+            // 检查关键词匹配
+            essayKeywords.forEach(keyword => {
+                if (essay.includes(keyword)) {
+                    keywordCount++;
+                }
+            });
+            
+            // 关键词匹配得分（最多10分）
+            score += Math.min(keywordCount, 5) * 2;
+            
+            // 内容完整性得分（最多10分）
+            const contentScore = Math.min(essay.length / 10, 10);
+            if (contentScore <=10){
+            score += contentScore;}else{score+=10;}
+            
+            // 确保不超过20分
+            if (score > 20) score = 20;
+            return Math.min(Math.round(score), 20);
+        }
+    </script>
+</body>
+</html>

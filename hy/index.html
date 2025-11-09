@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>兰州一中社团展演活动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="icon" href="https://home.lolicon.xin/favicon.ico" />
+    <link rel="stylesheet" href="hy/css/all.css">
+</head>
+<body style="user-select: none;">
+    <div id="scaling-wrapper">
+        <div class="舞台区域" id="舞台区域">士不可以不弘毅，任重而道远</div>
+        <div class="容器">
+            <div class="座位容器" id="座位容器"></div>
+        </div>
+        <div class="控制区">
+            <label for="抽奖人数">抽奖人数:</label>
+            <input type="number" id="抽奖人数" min="1" value="1" max="6">
+            <label for="音效开关" class="开关标签" 
+            style="display: none;/*把这里改成inline,就可以出现音效开关了*/">
+                <input type="checkbox" id="音效开关" class="开关">  音效</label>
+            <label><input type="radio" name="排数范围" value="全部" checked> 全部</label>
+            <label><input type="radio" name="排数范围" value="不含第0排"> 不含第0排</label>
+            <label><input type="radio" name="排数范围" value="不含中间0排"> 不含中间0排</label><br>
+            <button id="开始按钮">开始抽奖</button><br>
+            <div class="版权信息"><span class="info">©<span id="2year">114514</span> <a style="text-decoration:none;color:#ff0000b2"
+                href="https://hello.1zdigital.space/">数码空间</a></span>
+            <script type="text/javascript">
+              function toChineseYear(year) {
+                var chineseNumbers = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+                var yearStr = year.toString();
+                var result = '';
+                for (var i = 0; i < yearStr.length; i++) {
+                  result += chineseNumbers[parseInt(yearStr.charAt(i))];
+                }
+                return result;
+              }
+        
+              var nowyear = new Date().getFullYear();
+              var a1 = toChineseYear(nowyear);
+              document.getElementById("2year").innerHTML = a1;</script></div>
+        </div>
+    </div>
+
+    <script src="hy/js/index.js"></script>
+</body>
+</html>
