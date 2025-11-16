@@ -65,7 +65,8 @@
         
         .content {
             width: 60%;
-            padding: 40px;
+            padding: 30px;
+            padding-bottom: 25px;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(8px);
             border-radius: 20px;
@@ -234,6 +235,24 @@ siteno &lt;含http(s)的网址&gt; - 测试指定网址的延迟
 whois &lt;域名&gt; - 查询指定域名的whois信息
 port &lt;IP地址&gt; - 扫描指定IP地址的端口
 site &lt;含http(s)的网址&gt; - 获取网站截图</pre>
+            <div class="footer-content need-padding" style="text-decoration:none;color:#0099ffb9;font-size:small;text-align: center;padding-top: 20px;">
+                <span>©<span id="2year">114514</span> <a style="text-decoration:none;color:#0099ffb9"
+                    href="https://hello.1zdigital.space/">数码空间</a></span>
+                <script type="text/javascript">
+                function toChineseYear(year) {
+                    var chineseNumbers = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+                    var yearStr = year.toString();
+                    var result = '';
+                    for (var i = 0; i < yearStr.length; i++) {
+                    result += chineseNumbers[parseInt(yearStr.charAt(i))];
+                    }
+                    return result;
+                }
+
+                var nowyear = new Date().getFullYear();
+                var a1 = toChineseYear(nowyear);
+                document.getElementById("2year").innerHTML = a1;</script>
+            </div>
         </div>
         <div class="floating-image">
             <img src="https://cdn-community.bcmcdn.com/47/community/d2ViXzMwMDFfMzQwODM0OF8wXzE3NjMyMjE0MjM5NzZfZmVhNDczMWY.png">
