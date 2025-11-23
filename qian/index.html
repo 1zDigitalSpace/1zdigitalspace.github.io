@@ -51,6 +51,14 @@
             background: linear-gradient(145deg, #f0f8ff, #fff0f5);
             color: #333366;
             overflow-x: hidden;
+            font-family: PingFangSC-Regular, Roboto, Helvetica Neue, Helvetica, Tahoma, Arial, PingFang SC-Light, Microsoft YaHei;
+            align-items: center;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
         }
         
         .container {
@@ -285,11 +293,9 @@ gpu &lt;序号&gt; - 基于搜索结果查看详情</pre>
         const images = [
             {
                 url: '1.png',
-                number: 1
             },
             {
                 url: '2.png',
-                number: 2
             }
         ];
         
@@ -304,8 +310,6 @@ gpu &lt;序号&gt; - 基于搜索结果查看详情</pre>
             
             setTimeout(() => {
                 randomImage.src = selectedImage.url;
-                randomImage.alt = `图片 ${selectedImage.number}`;
-                imageNumber.textContent = selectedImage.number; 
             }, 0);
         }
         window.addEventListener('load', selectRandomImage);
