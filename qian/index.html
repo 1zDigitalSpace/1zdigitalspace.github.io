@@ -64,27 +64,28 @@
         }
         
         .content {
-            width: 60%;
-            padding: 30px;
-            padding-bottom: 25px;
+            width: 65%;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(8px);
             border-radius: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             z-index: 1;
-            
+            padding: 40px;
+            margin: 30px;
+            padding-bottom: 25px;
+            margin-bottom: 10px;
             color: #333366;
         }
         
         
         .floating-image {
             position: fixed;
-            right: 10%;
+            right: calc(11% - 40px);
             top: 50%;
             transform: translateY(-50%);
-            width: 19%;
-            max-width: 400px;
+            width: calc(16% + 20px);
+            min-width: 180px;
             animation: float 6s ease-in-out infinite;
             filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
             z-index: 2;
@@ -158,6 +159,10 @@
             margin-top: 10px;
             border: 1px solid #ff0055;
         }
+        span {
+            color: #ff0055;
+            font-family: 'Courier New', monospace;
+        }
         h1:after {
             content: "";
             display: inline-block;
@@ -194,7 +199,7 @@
             <pre>千 / 小千 / @千</pre>
             
             <h3>1.大语言模型(llm)功能</h3>
-            <p>小千已接入qwen3-vl-8b模型，支持图像识别功能</p>
+            <p>小千已接入<span> qwen3-vl-8b </span>模型，支持图像识别功能</p>
             <p>触发关键词或私聊中发送任意非函数名内容即可触发llm功能,聊天信息中可以附带图片,可以查询系统时间和天气等信息,可以问一些简单题目</p>
             <p style="color: red;">在千反应异常说梦话的时候请使用下方指令重置！！！</p>
             <pre>reset</pre>  
@@ -273,8 +278,38 @@ gpu &lt;序号&gt; - 基于搜索结果查看详情</pre>
             </div>
         </div>
         <div class="floating-image">
-            <img src="https://cdn-community.bcmcdn.com/47/community/d2ViXzMwMDFfMzQwODM0OF8wXzE3NjM2NjAyOTgyOTdfZDhkMzJmZWQ.png">
+            <img id="a" />
         </div>
+    <script>
+        // 图片数组 - 这里使用在线图片作为示例
+        const images = [
+            {
+                url: '1.png',
+                number: 1
+            },
+            {
+                url: '2.png',
+                number: 2
+            }
+        ];
+        
+        // 获取DOM元素
+        const randomImage = document.getElementById('a');
+        
+        // 随机选择图片函数
+        function selectRandomImage() {
+            // 生成0或1的随机数
+            const randomIndex = Math.floor(Math.random() * images.length);
+            const selectedImage = images[randomIndex];
+            
+            setTimeout(() => {
+                randomImage.src = selectedImage.url;
+                randomImage.alt = `图片 ${selectedImage.number}`;
+                imageNumber.textContent = selectedImage.number; 
+            }, 0);
+        }
+        window.addEventListener('load', selectRandomImage);
+    </script>
     </div>
 </body>
 </html>
