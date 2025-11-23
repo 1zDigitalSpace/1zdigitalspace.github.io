@@ -83,7 +83,7 @@
             right: 10%;
             top: 50%;
             transform: translateY(-50%);
-            width: 20%;
+            width: 19%;
             max-width: 400px;
             animation: float 6s ease-in-out infinite;
             filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
@@ -197,7 +197,7 @@
             <p>小千已接入qwen3-vl-8b模型，支持图像识别功能</p>
             <p>触发关键词或私聊中发送任意非函数名内容即可触发llm功能,聊天信息中可以附带图片,可以查询系统时间和天气等信息,可以问一些简单题目</p>
             <p style="color: red;">在千反应异常说梦话的时候请使用下方指令重置！！！</p>
-            <pre>new</pre>  
+            <pre>reset</pre>  
             <h3>2.运势检测打卡</h3>
             <pre>运势 / 签到 / 打卡 - 发送生成的当天的运势和累计打卡天数</pre>
             <h3>3.qq名片点赞</h3>
@@ -221,8 +221,12 @@
             <pre>盒 &lt;@好友&gt;</pre>
             <h3>12.bilibili直播提醒</h3>
             <p>仅在数码空间群内,特定直播间开播/下播时在群内发一条消息提醒</p>
-            <h3>13.查Minecraft服务器状态</h3>
-            <pre>mcs &lt;minecraft服务器地址&gt;</pre>
+            <h3>13.Minecraft工具</h3>
+            <pre>mcs &lt;minecraft服务器地址&gt; - 查看服务器状态
+mcskin &lt;username&gt; - 查看正版玩家皮肤
+mod &lt;name&gt; - 查询mod
+modpack &lt;name&gt; - 查询整合包
+item &lt;name&gt; - 查询物品</pre>
             <h3>14.早安晚安</h3>
             <pre>早安 / 晚安</pre>
             <h3>15.Arch Linux 软件包搜索</h3>
@@ -236,6 +240,19 @@ siteno &lt;含http(s)的网址&gt; - 测试指定网址的延迟
 whois &lt;域名&gt; - 查询指定域名的whois信息
 port &lt;IP地址&gt; - 扫描指定IP地址的端口
 ip &lt;IP地址&gt; - 查询指定IP地址的信息</pre>
+            <h3>18.CPU/GPU查询</h3>
+            <pre>cpu - 查看CPU性能天梯图
+cpu &lt;CPU关键词&gt; - 查询特定CPU的详细信息
+cpu &lt;序号&gt; - 基于搜索结果查看详情
+gpu - 查看GPU性能天梯图
+gpu &lt;GPU关键词&gt; - 查询特定GPU的详细信息
+gpu &lt;序号&gt; - 基于搜索结果查看详情</pre>
+            <h3>19.galgame查询</h3>
+            <pre>gal &lt;游戏名&gt; - 查询galgame</pre>
+            <h3>20.系统状态</h3>
+            <pre>status</pre>
+            <h3>21.每日新闻</h3>
+            <pre>news</pre>
             <div class="footer-content need-padding" style="text-decoration:none;color:#0099ffb9;font-size:small;text-align: center;padding-top: 20px;">
                 <span>©<span id="2year">114514</span> <a style="text-decoration:none;color:#0099ffb9"
                     href="https://hello.1zdigital.space/">数码空间</a></span>
