@@ -79,7 +79,7 @@
 	}
 }
 
-body {
+body {filter: grayscale(1);
 	background: var(--heo-background) no-repeat 50%;
 	background-size: cover;
 	background-attachment: fixed;
